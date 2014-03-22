@@ -1,28 +1,8 @@
-== README
+ADAM'S README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MODELS
+  UCR: the crimes reported by each local police department in the USA.  As of this writing we are only interested in the crimes reported by police departments in California, but that's OK!
 
-Things you may want to cover:
+  ABC License: each California establishment (premise) with a license to sell alcohol.  Type of license (beer/wine vs liquor) and premise address are included.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  - we keep the state attribute to validate that all entries are California state; they all should be.
