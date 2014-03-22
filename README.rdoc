@@ -6,3 +6,6 @@ MODELS
   ABC License: each California establishment (premise) with a license to sell alcohol.  Type of license (beer/wine vs liquor) and premise address are included.
 
   - we keep the state attribute to validate that all entries are California state; they all should be.
+
+OTHER NOTES:
+  early in development, I had to recreate my db, so some of the earliest migrations might be unavailable
