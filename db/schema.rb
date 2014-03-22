@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322222023) do
+ActiveRecord::Schema.define(version: 20140322224743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abc_licenses", force: true do |t|
+    t.string   "dba_name"
+    t.string   "primary_name"
+    t.string   "premise_street_address"
+    t.string   "premise_city"
+    t.string   "premise_zipcode"
+    t.string   "license_or_application"
+    t.string   "months_of_term"
+    t.string   "mail_street_address"
+    t.string   "mail_city"
+    t.string   "mail_state"
+    t.string   "mail_zipcode"
+    t.string   "premise_county"
+    t.float    "premise_census_tract"
+    t.integer  "district_office_code"
+    t.boolean  "master_indicator"
+    t.integer  "geocode"
+    t.string   "fee_code"
+    t.integer  "duplicate_counts"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "uniform_crime_reports", force: true do |t|
     t.string   "city"
