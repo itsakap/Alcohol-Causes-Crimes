@@ -2,7 +2,7 @@ class CreateAbcLicenses < ActiveRecord::Migration
   def change
     create_table :abc_licenses do |t|
       t.integer :license_file_number
-      t.string :dba_name
+      t.string :dba_name #doing business as
       t.string :primary_name
       t.string :type_original_issue
       t.string :expiration_date
