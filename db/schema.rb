@@ -11,24 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322224743) do
+ActiveRecord::Schema.define(version: 20140322230540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "abc_licenses", force: true do |t|
-    t.string   "dba_name" #doing business name as
+    t.integer  "license_file_number"
+    t.string   "dba_name"
     t.string   "primary_name"
-    t.string   "premise_street_address" #premise as in the location of sale
+    t.string   "type_original_issue"
+    t.string   "expiration_date"
+    t.string   "license_type"
+    t.string   "premise_street_address"
     t.string   "premise_city"
+    t.string   "premise_state"
     t.string   "premise_zipcode"
     t.string   "license_or_application"
     t.string   "months_of_term"
-    t.string   "mail_street_address" #billing address
+    t.string   "mail_street_address"
     t.string   "mail_city"
     t.string   "mail_state"
     t.string   "mail_zipcode"
-    t.string   "premise_county" #which county? Los Angeles, Ventura, Orange, etc
+    t.string   "premise_county"
     t.float    "premise_census_tract"
     t.integer  "district_office_code"
     t.boolean  "master_indicator"
@@ -44,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140322224743) do
     t.string   "state"
     t.string   "state_abbv"
     t.integer  "city_population"
-    t.integer  "number_of_violent_crimes" #the following attributes are a % of this
+    t.integer  "number_of_violent_crimes"
     t.integer  "murder_and_nonnegligent_manslaughter"
     t.integer  "forcible_rape"
     t.integer  "robbery"
