@@ -40,7 +40,8 @@ group :development, :test do
   gem 'pry'
 end
 
-# google maps api gem
+
+# SLATED FOR FUTURE REMOVAL: google maps api gem
 gem 'gmaps4rails'
 gem 'geocoder'
 
