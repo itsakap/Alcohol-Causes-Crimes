@@ -11,66 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324182643) do
+ActiveRecord::Schema.define(version: 20140325223859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "abc_licenses", force: true do |t|
-    t.integer  "license_file_number"
-    t.string   "dba_name"
-    t.string   "primary_name"
-    t.string   "type_original_issue"
-    t.string   "expiration_date"
-    t.string   "license_type"
-    t.string   "premise_street_address"
-    t.string   "premise_city"
-    t.string   "premise_state"
-    t.string   "premise_zipcode"
-    t.string   "license_or_application"
-    t.string   "months_of_term"
-    t.string   "mail_street_address"
-    t.string   "mail_city"
-    t.string   "mail_state"
-    t.string   "mail_zipcode"
-    t.string   "premise_county"
-    t.float    "premise_census_tract"
-    t.integer  "district_office_code"
-    t.boolean  "master_indicator"
-    t.integer  "geocode"
-    t.string   "fee_code"
-    t.integer  "duplicate_counts"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "facts", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "uniform_crime_reports", force: true do |t|
-    t.string   "city"
+  create_table "cities", force: true do |t|
+    t.integer  "population"
+    t.integer  "violent_crimes"
+    t.string   "city_name"
     t.string   "state"
-    t.string   "state_abbv"
-    t.integer  "city_population"
-    t.integer  "number_of_violent_crimes"
-    t.integer  "murder_and_nonnegligent_manslaughter"
-    t.integer  "forcible_rape"
-    t.integer  "robbery"
-    t.integer  "aggravated_assault"
-    t.integer  "property_crime"
-    t.integer  "burglary"
-    t.integer  "larceny_theft"
-    t.integer  "motor_vehicle_theft"
-    t.integer  "arson"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "zip_cities", force: true do |t|
-    t.string   "zipcode"
-    t.string   "city"
+  create_table "counties", force: true do |t|
+    t.string   "county_name"
+    t.string   "state"
+    t.string   "code"
+    t.float    "pc_liquor_stores"
+    t.float    "pc_violent_crimes"
+    t.integer  "population"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "number_of_liquor_store"
+    t.integer  "number_of_violent_crimes"
+  end
+
+  create_table "liquor_stores", force: true do |t|
+    t.string   "license_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
