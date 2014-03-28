@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325223859) do
+ActiveRecord::Schema.define(version: 20140326235308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20140325223859) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "county_id"
+  end
+
+  add_index "cities", ["county_id"], name: "index_cities_on_county_id", using: :btree
+
+  create_table "city_counties", force: true do |t|
+    t.string   "city_name"
+    t.string   "state"
+    t.string   "code"
+    t.string   "county_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "counties", force: true do |t|
@@ -32,17 +44,20 @@ ActiveRecord::Schema.define(version: 20140325223859) do
     t.string   "code"
     t.float    "pc_liquor_stores"
     t.float    "pc_violent_crimes"
-    t.integer  "population"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "number_of_liquor_store"
-    t.integer  "number_of_violent_crimes"
+    t.integer  "liquor_store_count",  default: 0
+    t.integer  "violent_crime_count", default: 0
+    t.integer  "population",          default: 0
   end
 
   create_table "liquor_stores", force: true do |t|
     t.string   "license_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "county_id"
   end
+
+  add_index "liquor_stores", ["county_id"], name: "index_liquor_stores_on_county_id", using: :btree
 
 end

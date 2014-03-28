@@ -1,26 +1,33 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
-<script>
 
-var width = 960,
-    height = 500;
+<div id = "sss"></div>
+<script>
+var data = {};
+var width = 300,
+    height = 400;
 
 var rateById = d3.map();
 
 var quantize = d3.scale.quantize()
-    .domain([0, .15])
+    .domain([0, .013])
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
 var path = d3.geo.path();
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#sss").append("svg")
     .attr("width", width)
     .attr("height", height);
+tooltip = d3.select("body")
+  .append('div')
+  .attr("id","tooltip")
 
 queue()
-    .defer(d3.json, "/mbostock/raw/4090846/us.json")
-    .defer(d3.tsv, "unemployment.tsv", function(d) { rateById.set(d.id, +d.rate); })
+    .defer(d3.json, "assets/ca-counties.json")
+    .defer(d3.csv, "assets/crime_magnitudes.csv", function(d) { rateById.set(d.id, +d.magnitude);
+      data[d.id] = d.magnitude;
+      })
     .await(ready);
 
 function ready(error, us) {
@@ -28,10 +35,22 @@ function ready(error, us) {
       .attr("class", "counties")
     .selectAll("path")
       .data(topojson.feature(us, us.objects.counties).features)
-    .enter().append("path")
-      .attr("class", function(d) { return quantize(rateById.get(d.id)); })
-      .attr("d", path);
-
+      .enter().append("path")
+        .attr("class", function(d) { return quantize(rateById.get(d.id)); })
+        .attr("d", path)
+        .on("mouseover", function(d){
+          pcstring = Number(data[d.id]).toFixed(4);
+          tooltip.text(d.properties.name + " County: " +pcstring+ " per capita violent crime");
+          d3.select(this).style('stroke-width','4px');
+          d3.select(this).style('stroke','red');
+          tooltip.style("visibility","visible");
+        })
+        .on("mousemove", function(){
+          tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+        .on("mouseout",function(){
+          d3.select(this).style('stroke-width','0px');
+          tooltip.style("visibility","hidden");
+        });
   svg.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
       .attr("class", "states")
