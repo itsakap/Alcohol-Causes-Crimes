@@ -9,7 +9,9 @@ ABC License: each California establishment (premise) with a license to sell alco
 
 
 OUR GOAL
-  Using a Choropleth (D3JS thing; Google it), assess per capita[alcohol stores, violent crime, etc]
+
+Using a Choropleth (D3JS thing; Google it), assess per capita[alcohol stores, violent crime, etc]
 
 OTHER NOTES:
-  early in development, I had to recreate my db, so some of the earliest migrations might be unavailable
+
+early in development, I had to recreate my db, so some of the earliest migrations might be unavailable
