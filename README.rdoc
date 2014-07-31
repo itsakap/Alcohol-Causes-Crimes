@@ -1,17 +1,7 @@
-ADAM'S README
+D3 Sample
 
-OUR CSV FILES
+Choropleth map of California state.
 
-UCR: the crimes reported by each local police department in the USA.  As of this writing we are only interested in the crimes reported by police departments in California, but that's OK!
+Colors represent crimes per capita (shades of red) and number of alcohol vendors per capita (shades of blue) in all California counties.
 
-
-ABC License: each California establishment (premise) with a license to sell alcohol.  Type of license (beer/wine vs liquor) and premise address are included.
-
-
-OUR GOAL
-
-Using a Choropleth (D3JS thing; Google it), assess per capita[alcohol stores, violent crime, etc]
-
-OTHER NOTES:
-
-early in development, I had to recreate my db, so some of the earliest migrations might be unavailable
+All in D3js.
